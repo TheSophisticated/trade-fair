@@ -23,8 +23,8 @@ def buy_shares(company, shares):
 
 def sell_shares(company, shares):
     st.session_state.companies[company]['shares_bought'] -= shares
-    if st.session_state.companies[company]['shares_bought'] != 0:
-        st.session_state.companies[company]['share_price'] -= 2       
+    if st.session_state.companies[company]['shares_bought'] != 0 and shares != 0:
+        st.session_state.companies[company]['share_price'] -= 2*st.session_state.companies[company]['shares_bought'] // 10      
 
 st.markdown("<div style='text-align: center;'><h1>Mayoor Trade Fair 📈</h1></div>", unsafe_allow_html=True)
 st.write("\n")
