@@ -19,11 +19,11 @@ if 'share_1' not in st.session_state:
 def buy_shares(company, shares):
     st.session_state.companies[company]['shares_bought'] += shares
     if st.session_state.companies[company]['shares_bought'] != 0 and st.session_state.companies[company]['shares_bought'] % 10 == 0:
-        st.session_state.companies[company]['share_price'] += 2
+        st.session_state.companies[company]['share_price'] += 2*st.session_state.companies[company]['shares_bought'] // 10
 
 def sell_shares(company, shares):
     st.session_state.companies[company]['shares_bought'] -= shares
-    if st.session_state.companies[company]['shares_bought'] != 0 and shares % 10 == 0 and shares < st.session_state.companies[company]['shares_bought'] % 10:
+    if st.session_state.companies[company]['shares_bought'] != 0:
         st.session_state.companies[company]['share_price'] -= 2       
 
 st.markdown("<div style='text-align: center;'><h1>Mayoor Trade Fair 📈</h1></div>", unsafe_allow_html=True)
