@@ -5,9 +5,6 @@ import streamlit_shadcn_ui as ui
 
 st.set_page_config(page_title="Mayoor Trade Fair", initial_sidebar_state='collapsed')
 
-
-ui.button("Reset", key="reset_btn")
-
 #Setting User Budget
 if 'user_wallet' not in st.session_state:
     st.session_state.user_wallet = 100
@@ -59,9 +56,6 @@ def sell_shares(company, shares):
 st.markdown("<div style='text-align: center;'><h1>Mayoor Trade Fair 📈</h1></div>", unsafe_allow_html=True)
 st.write("\n")
 
-
-
-
 company = st.selectbox(
     'Chose the Company you want to invest into',
     list(companies.keys())
@@ -93,17 +87,5 @@ with st.container():
         ui.metric_card(title="Shares Owned: ", content=st.session_state.companies[company]['shares_bought'], description="Total Shares of this Company bought at the Event", key="card1")
     with col2:
         ui.metric_card(title="Shares Price: ", content=st.session_state.companies[company]['share_price'], description="Current Share Price", key="card2")
-
-
-    # with st.container():
-    #     col1, col2, col3 = st.columns(3)
-
-
-    #     with col2:
-    #         st.write(f"{company} Shares Owned: {st.session_state.companies[company]['shares_bought']}")
-    #         st.write(f"{company} Share Price: {st.session_state.companies[company]['share_price']}")
-
-
-
 
 st.title(f":blue[Current Balance]: {st.session_state.user_wallet}")
