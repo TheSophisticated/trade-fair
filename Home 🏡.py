@@ -16,6 +16,8 @@ if 'share_1' not in st.session_state:
     st.session_state.share_1 = 0
     st.session_state.price_1 = 10
 
+#Buying and Selling Function
+
 def buy_shares(company, shares):
     st.session_state.companies[company]['shares_bought'] += shares
     if st.session_state.companies[company]['shares_bought'] != 0 and shares != 0:
