@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_extras.stylable_container import stylable_container
 import streamlit_shadcn_ui as ui
+import streamlit_lottie as st_lottie
 
 st.set_page_config(page_title="Mayoor Trade Fair", initial_sidebar_state='collapsed')
 
@@ -23,13 +24,11 @@ companies = {
     "Al Islamic Bank": {"share_price": 10, "shares_bought": 0},
     "Insurance Market AE": {"share_price": 10, "shares_bought": 0},
     "DAMAC": {"share_price": 10, "shares_bought": 0},
-    # Add more companies here
 }
 
 
 if 'companies' not in st.session_state:
     st.session_state.companies = {company_name: state for company_name, state in companies.items()}
-
 
 def buy_shares(company, shares):
     if st.session_state.companies[company]['share_price']*shares <= st.session_state.user_wallet:
@@ -72,6 +71,7 @@ with st.container():
         print(clicked)
         if clicked:
             buy_shares(company, num_shares)
+        
             
     with col2:
         shares_sell = st.number_input("Enter Number of Shares to Sell: ", min_value=0, max_value=st.session_state.companies[company]['shares_bought'])
