@@ -3,5 +3,4 @@ pandas
 streamlit_extras
 streamlit_shadcn_ui
 streamlit_lottie
-time
 numpy
