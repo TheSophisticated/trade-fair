@@ -5,5 +5,3 @@ streamlit_shadcn_ui
 streamlit_lottie
 numpy
 appwrite
-appwrite.client
-appwrite.services.databases
