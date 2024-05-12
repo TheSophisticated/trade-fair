@@ -74,7 +74,9 @@ def sell_shares(company, shares):
         st.session_state.companies[company]['shares_bought'] -= shares
         if shares // 10 != 0:
             st.session_state.companies[company]['share_price'] -= 2*(st.session_state.companies[company]['shares_bought']//10 - (st.session_state.companies[company]['shares_bought'] - shares)//10)
-            update_document(st.session_state.companies[company], st.session_state.companies[company]['share_price'], st.session_state.companies[company]['shares_bought'])
+            new_price = st.session_state.companies[company]['share_price']
+            Databases(client).update_document("shares", "stocks", get_doc_id(company), data={"share_price": new_price, "shares_sold": st.session_state.companies[company]['shares_bought']})
+            #update_document(st.session_state.companies[company], st.session_state.companies[company]['share_price'], st.session_state.companies[company]['shares_bought'])
         st.session_state.user_wallet += st.session_state.companies[company]['share_price']*shares
 
 #Getting Documents
