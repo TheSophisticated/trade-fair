@@ -173,6 +173,7 @@ if st.button("New User"):
     st.session_state.user_wallet = 100
     name = ''
     st.session_state["name"] = ''
+    st.switch_page("pages/name.py")
 
 #Graph Page
     # chart_data = pd.DataFrame()
